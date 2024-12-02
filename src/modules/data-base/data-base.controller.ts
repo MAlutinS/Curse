@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post, UsePipes, ValidationPipe } from '@nestjs/common';
 import { DataBaseService } from './data-base.service';
-import { DataCreateDto } from './data-base.dto';
+import { DataCreateDto } from './dto/data-base.dto';
 
 @Controller('data-base')
 export class DataBaseController {
