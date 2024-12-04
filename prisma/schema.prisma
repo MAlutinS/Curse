@@ -39,8 +39,8 @@ model Employee {
   name               String
   position           String
   employee_number    String      @unique
-  department         Department  @relation("DepartmentEmployees", fields: [department_id], references: [id])
-  department_id      Int
+  department         Department?  @relation("DepartmentEmployees", fields: [department_id], references: [id])
+  department_id      Int?
   team               Team?       @relation("TeamHead")
   cashier            Cashier?
   managed_department Department? @relation("DepartmentHead")
