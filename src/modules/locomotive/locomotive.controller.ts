@@ -9,7 +9,8 @@ import {
     ParseIntPipe,
   } from '@nestjs/common';
   import { LocomotiveService } from './locomotive.service';
-  import { CreateLocomotiveDto, UpdateLocomotiveDto } from './dto/locomotive.dto';
+  import { CreateLocomotiveDto } from './dto/create-locomotive.dto';
+  import { UpdateLocomotiveDto } from './dto/update-locomotive.dto';
   
   @Controller('locomotives')
   export class LocomotiveController {

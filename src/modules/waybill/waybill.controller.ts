@@ -9,8 +9,8 @@ import {
     ParseIntPipe,
   } from '@nestjs/common';
   import { WaybillService } from './waybill.service';
-  import { CreateWaybillDto, UpdateWaybillDto } from './dto/waybill.dto';
-  
+  import { CreateWaybillDto } from './dto/create-waybill.dto';
+  import { UpdateWaybillDto } from './dto/update-waybill.dto';
   @Controller('waybills')
   export class WaybillController {
     constructor(private readonly waybillService: WaybillService) {}

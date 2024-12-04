@@ -9,8 +9,8 @@ import {
     ParseIntPipe,
   } from '@nestjs/common';
   import { CashierService } from './cashier.service';
-  import { CreateCashierDto, UpdateCashierDto } from './dto/cashier.dto';
-  
+  import { CreateCashierDto } from './dto/create-cashier.dto';
+  import { UpdateCashierDto } from './dto/update-cashier.dto';
   @Controller('cashiers')
   export class CashierController {
     constructor(private readonly cashierService: CashierService) {}

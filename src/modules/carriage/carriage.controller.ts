@@ -9,8 +9,8 @@ import {
     ParseIntPipe,
   } from '@nestjs/common';
   import { CarriageService } from './carriage.service';
-  import { CreateCarriageDto, UpdateCarriageDto } from './dto/carriage.dto';
-  
+  import { CreateCarriageDto } from './dto/create-carriage.dto';
+  import { UpdateCarriageDto } from './dto/update-carriage.dto';
   @Controller('carriages')
   export class CarriageController {
     constructor(private readonly carriageService: CarriageService) {}

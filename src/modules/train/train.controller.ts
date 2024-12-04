@@ -9,8 +9,8 @@ import {
     ParseIntPipe,
   } from '@nestjs/common';
   import { TrainService } from './train.service';
-  import { CreateTrainDto, UpdateTrainDto } from './dto/train.dto';
-  
+  import { CreateTrainDto } from './dto/create-train.dto';
+  import { UpdateTrainDto } from './dto/update-train.dto';
   @Controller('trains')
   export class TrainController {
     constructor(private readonly trainService: TrainService) {}

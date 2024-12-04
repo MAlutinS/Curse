@@ -3,12 +3,12 @@ import { PrismaService } from 'src/modules/prisma/prisma.service';
 import { DataCreateDto } from './dto/data-base.dto';
 import { ConfigService } from '@nestjs/config';
 
-@Injectable()
-export class DataBaseService {
-    constructor(private readonly prisma:PrismaService){}
+//@Injectable()
+//export class DataBaseService {
+    //constructor(private readonly prisma:PrismaService){}
 
-    findAll(){
-        return this.prisma.user.findMany()
+    //findAll(){
+        //return this.prisma.user.findMany()
         
         
         
@@ -26,11 +26,11 @@ export class DataBaseService {
         //        description: 'The smartest one'
         //    }
         //]
-    }
+    //}
 
-    create(dto: DataCreateDto){
-        return this.prisma.user.create({
-            data: dto,
-        })
-    }
-}
+    //create(dto: DataCreateDto){
+        //return this.prisma.user.create({
+          //  data: dto,
+        //})
+   // }
+//}//

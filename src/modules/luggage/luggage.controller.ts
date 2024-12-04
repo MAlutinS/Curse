@@ -9,8 +9,8 @@ import {
     ParseIntPipe,
   } from '@nestjs/common';
   import { LuggageService } from './luggage.service';
-  import { CreateLuggageDto, UpdateLuggageDto } from './dto/luggage.dto';
-  
+  import { CreateLuggageDto} from './dto/create-luggage.dto';
+  import { UpdateLuggageDto } from './dto/update-luggage.dto';
   @Controller('luggages')
   export class LuggageController {
     constructor(private readonly luggageService: LuggageService) {}

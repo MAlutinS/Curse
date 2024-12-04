@@ -9,8 +9,8 @@ import {
     ParseIntPipe,
   } from '@nestjs/common';
   import { TeamService } from './team.service';
-  import { CreateTeamDto, UpdateTeamDto } from './dto/team.dto';
-  
+  import { CreateTeamDto} from './dto/create-team.dto';
+  import { UpdateTeamDto } from './dto/update-team.dto';
   @Controller('teams')
   export class TeamController {
     constructor(private readonly teamService: TeamService) {}

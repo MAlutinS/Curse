@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-import { CreateRouteDto, UpdateRouteDto } from './dto/route.dto';
-
+import { CreateRouteDto } from './dto/create-route.dto';
+import { UpdateRouteDto } from './dto/upade-route.dto';
 @Injectable()
 export class RouteService {
   constructor(private prisma: PrismaService) {}

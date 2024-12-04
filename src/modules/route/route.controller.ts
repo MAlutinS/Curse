@@ -9,8 +9,8 @@ import {
     ParseIntPipe,
   } from '@nestjs/common';
   import { RouteService } from './route.service';
-  import { CreateRouteDto, UpdateRouteDto } from './dto/route.dto';
-  
+  import { CreateRouteDto } from './dto/create-route.dto';
+  import { UpdateRouteDto } from './dto/upade-route.dto';
   @Controller('routes')
   export class RouteController {
     constructor(private readonly routeService: RouteService) {}

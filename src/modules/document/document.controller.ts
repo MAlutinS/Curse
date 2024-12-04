@@ -9,8 +9,8 @@ import {
     ParseIntPipe,
   } from '@nestjs/common';
   import { DocumentService } from './document.service';
-  import { CreateDocumentDto, UpdateDocumentDto } from './dto/document.dto';
-  
+  import { CreateDocumentDto } from './dto/create-document.dto';
+  import { UpdateDocumentDto } from './dto/update-document.dto';
   @Controller('documents')
   export class DocumentController {
     constructor(private readonly documentService: DocumentService) {}

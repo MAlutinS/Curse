@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-import { CreateCarriageDto, UpdateCarriageDto } from './dto/carriage.dto';
-
+import { CreateCarriageDto } from './dto/create-carriage.dto';
+import { UpdateCarriageDto } from './dto/update-carriage.dto';
 @Injectable()
 export class CarriageService {
   constructor(private prisma: PrismaService) {}
