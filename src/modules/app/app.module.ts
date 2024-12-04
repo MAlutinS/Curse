@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { DataBaseModule } from '../data-base/data-base.module';
 import { ConfigModule } from '@nestjs/config';
 import { PrismaModule } from '../prisma/prisma.module';
 import { TeamModule } from '../team/team.module';
@@ -19,7 +18,7 @@ import { DocumentModule } from '../document/document.module';
 @Module({
   imports: [ConfigModule.forRoot({
     isGlobal: true,
-  }) ,DataBaseModule, PrismaModule, TeamModule,
+  }) , PrismaModule, TeamModule,
   DepartmentModule, EmployeeModule, TrainModule,
   LocomotiveModule, CarriageModule, WaybillModule,
   LuggageModule, RouteModule, PassengerModule,

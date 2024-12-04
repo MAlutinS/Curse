@@ -14,10 +14,10 @@ export class CreateEmployeeDto {
   employee_number: string;
 
   @IsInt()
-  @IsNotEmpty()
+  @IsOptional()
   department_id: number;
 
-  @IsOptional()
   @IsInt()
+  @IsOptional()
   team_id?: number;
 }

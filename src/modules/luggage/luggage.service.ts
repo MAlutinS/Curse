@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-import { CreateLuggageDto, UpdateLuggageDto } from './dto/create-luggage.dto';
-
+import { CreateLuggageDto} from './dto/create-luggage.dto';
+import { UpdateLuggageDto } from './dto/update-luggage.dto';
 @Injectable()
 export class LuggageService {
   constructor(private prisma: PrismaService) {}
