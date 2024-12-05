@@ -1,19 +1,19 @@
-import { IsString, IsInt, IsNotEmpty, IsDate, IsOptional } from 'class-validator';
+import { IsString, IsNotEmpty, IsInt, IsDate } from 'class-validator';
 
 export class CreateLocomotiveDto {
   @IsString()
   @IsNotEmpty()
-  type: string;
+  locomotive_type: string;
 
   @IsString()
   @IsNotEmpty()
-  condition: string;
+  locomotive_condition: string;
 
   @IsDate()
   @IsNotEmpty()
-  annual_inspection_date: Date;
+  last_tech_inspection: Date;
 
   @IsInt()
   @IsNotEmpty()
-  inspection_team_id: number;
+  repair_brigade_id: number;
 }

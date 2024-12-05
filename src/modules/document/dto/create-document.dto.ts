@@ -1,15 +1,19 @@
-import { IsString,IsNotEmpty, IsDate } from 'class-validator';
+import { IsInt, IsNotEmpty, IsDate, IsString } from 'class-validator';
 
 export class CreateDocumentDto {
-  @IsString()
+  @IsInt()
   @IsNotEmpty()
-  document_number: string;
+  document_series: number;
 
-  @IsString()
+  @IsInt()
   @IsNotEmpty()
-  series: string;
+  document_number: number;
 
   @IsDate()
   @IsNotEmpty()
-  issue_date: Date;
+  document_issue_date: Date;
+
+  @IsString()
+  @IsNotEmpty()
+  gender: string;
 }

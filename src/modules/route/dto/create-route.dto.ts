@@ -1,19 +1,19 @@
-import { IsString, IsNotEmpty, IsNumber } from 'class-validator';
+import { IsInt, IsNotEmpty, IsString, IsArray, IsNumber } from 'class-validator';
 
 export class CreateRouteDto {
-  @IsString()
+  @IsInt()
   @IsNotEmpty()
-  route_number: string;
+  route_number: number;
 
-  @IsString()
-  @IsNotEmpty()
-  station_list: string;
+  @IsArray()
+  @IsString({ each: true })
+  stations_list: string[];
 
   @IsNumber()
   @IsNotEmpty()
-  fare: number;
+  route_cost: number;
 
   @IsString()
   @IsNotEmpty()
-  category: string;
+  route_category: string;
 }

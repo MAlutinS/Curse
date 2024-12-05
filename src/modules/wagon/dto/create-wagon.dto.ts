@@ -1,15 +1,15 @@
 import { IsInt, IsNotEmpty } from 'class-validator';
 
-export class CreateTrainDto {
+export class CreateWagonDto {
   @IsInt()
   @IsNotEmpty()
-  train_route_number: number;
+  wagon_side_number: number;
 
   @IsInt()
   @IsNotEmpty()
-  train_locomotive_id: number;
+  conductor_id: number;
 
   @IsInt()
   @IsNotEmpty()
-  train_length: number;
+  train_id: number;
 }

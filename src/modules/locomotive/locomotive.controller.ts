@@ -1,46 +1,34 @@
-import {
-    Controller,
-    Get,
-    Post,
-    Body,
-    Put,
-    Param,
-    Delete,
-    ParseIntPipe,
-  } from '@nestjs/common';
-  import { LocomotiveService } from './locomotive.service';
-  import { CreateLocomotiveDto } from './dto/create-locomotive.dto';
-  import { UpdateLocomotiveDto } from './dto/update-locomotive.dto';
-  
-  @Controller('locomotives')
-  export class LocomotiveController {
-    constructor(private readonly locomotiveService: LocomotiveService) {}
-  
-    @Post()
-    create(@Body() createLocomotiveDto: CreateLocomotiveDto) {
-      return this.locomotiveService.create(createLocomotiveDto);
-    }
-  
-    @Get()
-    findAll() {
-      return this.locomotiveService.findAll();
-    }
-  
-    @Get(':id')
-    findOne(@Param('id', ParseIntPipe) id: number) {
-      return this.locomotiveService.findOne(id);
-    }
-  
-    @Put(':id')
-    update(
-      @Param('id', ParseIntPipe) id: number,
-      @Body() updateLocomotiveDto: UpdateLocomotiveDto,
-    ) {
-      return this.locomotiveService.update(id, updateLocomotiveDto);
-    }
-  
-    @Delete(':id')
-    remove(@Param('id', ParseIntPipe) id: number) {
-      return this.locomotiveService.remove(id);
-    }
+import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common';
+import { LocomotiveService } from './locomotive.service';
+import { CreateLocomotiveDto } from './dto/create-locomotive.dto';
+import { UpdateLocomotiveDto } from './dto/update-locomotive.dto';
+
+@Controller('locomotives')
+export class LocomotiveController {
+  constructor(private readonly locomotiveService: LocomotiveService) {}
+
+  @Post()
+  create(@Body() createLocomotiveDto: CreateLocomotiveDto) {
+    return this.locomotiveService.create(createLocomotiveDto);
   }
+
+  @Get()
+  findAll() {
+    return this.locomotiveService.findAll();
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.locomotiveService.findOne(+id);
+  }
+
+  @Put(':id')
+  update(@Param('id') id: string, @Body() updateLocomotiveDto: UpdateLocomotiveDto) {
+    return this.locomotiveService.update(+id, updateLocomotiveDto);
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.locomotiveService.remove(+id);
+  }
+}

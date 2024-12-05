@@ -1,4 +1,4 @@
-import { IsInt, IsString, IsNotEmpty, IsNumber } from 'class-validator';
+import { IsInt, IsNotEmpty, IsString, IsNumber } from 'class-validator';
 
 export class CreateLuggageDto {
   @IsInt()
@@ -19,5 +19,5 @@ export class CreateLuggageDto {
 
   @IsNumber()
   @IsNotEmpty()
-  transportation_cost: number;
+  transport_cost: number;
 }

@@ -1,16 +1,11 @@
-import { IsString, IsInt,IsNotEmpty, IsOptional } from 'class-validator';
+import { IsString, IsNotEmpty, IsInt } from 'class-validator';
 
 export class CreateDepartmentDto {
   @IsString()
   @IsNotEmpty()
-  name: string;
+  area_work: string;
 
   @IsInt()
   @IsNotEmpty()
-  head_id: number;
-
-  @IsString()
-  @IsNotEmpty()
-  work_scope: string;
+  department_chief_id: number;
 }
-

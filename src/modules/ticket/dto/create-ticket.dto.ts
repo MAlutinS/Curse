@@ -1,27 +1,27 @@
-import { IsString, IsInt, IsNotEmpty, IsDate, IsNumber } from 'class-validator';
+import { IsInt, IsNotEmpty, IsDate, IsString, IsNumber } from 'class-validator';
 
 export class CreateTicketDto {
-  @IsString()
-  @IsNotEmpty()
-  ticket_number: string;
-
   @IsInt()
   @IsNotEmpty()
-  train_id: number;
-
-  @IsInt()
-  @IsNotEmpty()
-  passenger_id: number;
+  train_route_number: number;
 
   @IsDate()
   @IsNotEmpty()
   purchase_date: Date;
 
-  @IsInt()
-  @IsNotEmpty()
-  route_id: number;
-
   @IsNumber()
   @IsNotEmpty()
-  fare: number;
+  ticket_cost: number;
+
+  @IsDate()
+  @IsNotEmpty()
+  departures_date: Date;
+
+  @IsInt()
+  @IsNotEmpty()
+  passenger_id: number;
+
+  @IsString()
+  @IsNotEmpty()
+  ticket_status: string;
 }
