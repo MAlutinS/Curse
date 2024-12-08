@@ -12,7 +12,6 @@ import { RouteModule } from '../route/route.module';
 import { TicketModule } from '../ticket/ticket.module';
 import { PassengerModule } from '../passenger/passenger.module';
 import { DocumentModule } from '../document/document.module';
-import { LuggageModule } from '../luggage/luggage.module';
 
 @Module({
   imports: [
@@ -31,7 +30,6 @@ import { LuggageModule } from '../luggage/luggage.module';
     TicketModule,
     PassengerModule,
     DocumentModule,
-    LuggageModule,
   ],
 })
 export class AppModule {}

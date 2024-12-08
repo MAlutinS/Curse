@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -13,124 +7,119 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Worker{
-  worker_id               Int           @id @default(autoincrement())
-  firstname               String
-  lastname                String
-  position                String
-  department_id           Int
-  brigade_id              Int
-  qualification           String
-  medical_examination     DateTime
+model Worker {
+  worker_id           Int      @id @default(autoincrement())
+  firstname           String
+  lastname            String
+  position            String
+  department_id       Int
+  brigade_id          Int
+  qualification       String
+  medical_examination DateTime
 
-  department              Department    @relation(fields: [department_id], references: [department_id])
-  brigade                 Brigade       @relation(fields: [brigade_id], references: [brigade_id])
+  department Department @relation(fields: [department_id], references: [department_id])
+  brigade    Brigade    @relation(fields: [brigade_id], references: [brigade_id])
 }
 
-model Brigade{
-  brigade_id              Int           @id @default(autoincrement())
-  brigade_chief_id        Int
-  brigade_department_id   Int
+model Brigade {
+  brigade_id            Int @id @default(autoincrement())
+  brigade_chief_id      Int
+  brigade_department_id Int
 
-  department              Department    @relation(fields: [brigade_department_id], references: [department_id])
+  department Department @relation(fields: [brigade_department_id], references: [department_id])
 
-  workers                 Worker[]
-  locomotives             Locomotive[]
+  workers     Worker[]
+  locomotives Locomotive[]
 }
-model Department{
-  department_id           Int           @id @default(autoincrement())
-  area_work               String
-  department_chief_id     Int
 
-  workers                 Worker[]
-  brigades                Brigade[]
+model Department {
+  department_id       Int    @id @default(autoincrement())
+  area_work           String
+  department_chief_id Int
+
+  workers  Worker[]
+  brigades Brigade[]
 }
-model Locomotive{
-  locomotive_id           Int           @id @default(autoincrement())
-  locomotive_type         String
-  locomotive_condition    String
-  last_tech_inspection    DateTime
-  repair_brigade_id       Int
 
-  brigade                 Brigade       @relation(fields: [repair_brigade_id], references: [brigade_id])
-  train                   Train?       
+model Locomotive {
+  locomotive_id        Int      @id @default(autoincrement())
+  locomotive_type      String
+  locomotive_condition String
+  last_tech_inspection DateTime
+  repair_brigade_id    Int
+
+  brigade Brigade @relation(fields: [repair_brigade_id], references: [brigade_id])
+  train   Train?
 }
-model Train{
-  train_id                Int           @id @default(autoincrement())
-  train_route_number      Int
-  train_locomotive_id     Int           @unique
-  train_length            Int
 
-  locomotive              Locomotive    @relation(fields: [train_locomotive_id], references: [locomotive_id])
-  wagons                  Wagon[]
-  travel_sheet            Travel_sheet?
-  route                   Route         @relation(fields: [train_route_number], references: [route_number])
-  luggage                 Luggage?
+model Train {
+  train_id            Int @id @default(autoincrement())
+  train_route_number  Int
+  train_locomotive_id Int @unique
+  train_length        Int
+
+  locomotive   Locomotive    @relation(fields: [train_locomotive_id], references: [locomotive_id])
+  wagons       Wagon[]
+  travel_sheet Travel_sheet?
+  route        Route         @relation(fields: [train_route_number], references: [route_number])
 }
-model Wagon{
-  wagon_id                Int           @id @default(autoincrement())
-  wagon_side_number       Int
-  conductor_id            Int
-  train_id                Int
 
-  train                   Train         @relation(fields: [train_id], references: [train_id])
+model Wagon {
+  wagon_id          Int @id @default(autoincrement())
+  wagon_side_number Int
+  conductor_id      Int
+  train_id          Int
+
+  train Train @relation(fields: [train_id], references: [train_id])
 }
-model Travel_sheet{
-  travel_sheet_id         Int           @id @default(autoincrement())
-  travel_train_id         Int           @unique
-  departures_day          DateTime
-  train_brigade_id        Int
 
-  train                   Train         @relation(fields: [travel_train_id], references: [train_id])
+model Travel_sheet {
+  travel_sheet_id  Int      @id @default(autoincrement())
+  travel_train_id  Int      @unique
+  departures_day   DateTime
+  train_brigade_id Int
+
+  train Train @relation(fields: [travel_train_id], references: [train_id])
 }
-model Route{
-  route_id                Int           @id @default(autoincrement())
-  route_number            Int           @unique
-  stations_list           String[]
-  route_cost              Float
-  route_category          String
 
-  trains                  Train[]
+model Route {
+  route_id       Int      @id @default(autoincrement())
+  route_number   Int      @unique
+  stations_list  String[]
+  route_cost     Float
+  route_category String
+
+  trains Train[]
 }
-model Ticket{
-  ticket_id               Int           @id @default(autoincrement())
-  train_route_number      Int
-  purchase_date           DateTime
-  //route                   Route
-  ticket_cost             Float
-  departures_date         DateTime
-  passenger_id            Int
-  ticket_status           String
 
-  passenger               Passenger     @relation(fields: [passenger_id], references: [passenger_id])
+model Ticket {
+  ticket_id          Int      @id @default(autoincrement())
+  train_route_number Int
+  purchase_date      DateTime
+  ticket_cost        Float
+  departures_date    DateTime
+  passenger_id       Int
+  ticket_status      String
+
+  passenger Passenger @relation(fields: [passenger_id], references: [passenger_id])
 }
-model Passenger{
-  passenger_id            Int           @id @default(autoincrement())
-  firstname               String
-  lastname                String
-  document_id             Int           @unique
 
-  tickets                 Ticket[]
-  document                Document      @relation(fields: [document_id], references: [document_id])
-  luggage                 Luggage       @relation(fields: [passenger_id], references: [passenger_id])
+model Passenger {
+  passenger_id Int    @id @default(autoincrement())
+  firstname    String
+  lastname     String
+  document_id  Int    @unique
+
+  tickets  Ticket[]
+  document Document @relation(fields: [document_id], references: [document_id])
 }
-model Document{
-  document_id             Int           @id @default(autoincrement())
-  document_series         Int
-  document_number         Int
-  document_issue_date     DateTime
-  gender                  String
 
-  passenger               Passenger?
-}
-model Luggage{
-  luggage_id              Int           @id @default(autoincrement())
-  train_id                Int           @unique
-  passenger_id            Int           @unique
-  cargo_type              String
-  cargo_weight            Float
-  transport_cost          Float
+model Document {
+  document_id         Int      @id @default(autoincrement())
+  document_series     Int
+  document_number     Int
+  document_issue_date DateTime
+  gender              String
 
-  train                   Train         @relation(fields: [train_id], references: [train_id])
-  passengers              Passenger[]
+  passenger Passenger?
 }
