@@ -1,16 +1,16 @@
-import { IsInt, IsNotEmpty } from 'class-validator';
-import { ApiProperty } from '@nestjs/swagger';
+import { IsInt, IsOptional, IsNotEmpty } from 'class-validator';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
 export class CreateTrainDto {
-  @ApiProperty({ description: 'Number of the route' })
+  @ApiProperty({ description: 'Route number of the train' })
   @IsInt()
   @IsNotEmpty()
   train_route_number: number;
 
-  @ApiProperty({ description: 'Id of the locomotive' })
+  @ApiPropertyOptional({ description: 'ID of the locomotive' })
   @IsInt()
-  @IsNotEmpty()
-  train_locomotive_id: number;
+  @IsOptional()
+  train_locomotive_id?: number;
 
   @ApiProperty({ description: 'Length of the train' })
   @IsInt()

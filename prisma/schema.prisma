@@ -12,22 +12,21 @@ model Worker {
   firstname           String
   lastname            String
   position            String
-  department_id       Int
-  brigade_id          Int
+  department_id       Int?
+  brigade_id          Int?
   qualification       String
   medical_examination DateTime
 
-  department Department @relation(fields: [department_id], references: [department_id])
-  brigade    Brigade    @relation(fields: [brigade_id], references: [brigade_id])
+  department Department? @relation(fields: [department_id], references: [department_id])
+  brigade    Brigade?    @relation(fields: [brigade_id], references: [brigade_id])
 }
 
 model Brigade {
   brigade_id            Int @id @default(autoincrement())
-  brigade_chief_id      Int
-  brigade_department_id Int
+  brigade_chief_id      Int?
+  brigade_department_id Int?
 
-  department Department @relation(fields: [brigade_department_id], references: [department_id])
-
+  department Department? @relation(fields: [brigade_department_id], references: [department_id])
   workers     Worker[]
   locomotives Locomotive[]
 }
@@ -35,7 +34,7 @@ model Brigade {
 model Department {
   department_id       Int    @id @default(autoincrement())
   area_work           String
-  department_chief_id Int
+  department_chief_id Int?
 
   workers  Worker[]
   brigades Brigade[]
@@ -46,22 +45,22 @@ model Locomotive {
   locomotive_type      String
   locomotive_condition String
   last_tech_inspection DateTime
-  repair_brigade_id    Int
+  repair_brigade_id    Int?
 
-  brigade Brigade @relation(fields: [repair_brigade_id], references: [brigade_id])
+  brigade Brigade? @relation(fields: [repair_brigade_id], references: [brigade_id])
   train   Train?
 }
 
 model Train {
   train_id            Int @id @default(autoincrement())
   train_route_number  Int
-  train_locomotive_id Int @unique
+  train_locomotive_id Int? @unique
   train_length        Int
 
-  locomotive   Locomotive    @relation(fields: [train_locomotive_id], references: [locomotive_id])
+  locomotive   Locomotive?    @relation(fields: [train_locomotive_id], references: [locomotive_id])
   wagons       Wagon[]
   travel_sheet Travel_sheet?
-  route        Route         @relation(fields: [train_route_number], references: [route_number])
+  route        Route?         @relation(fields: [train_route_number], references: [route_number])
 }
 
 model Wagon {
@@ -75,11 +74,11 @@ model Wagon {
 
 model Travel_sheet {
   travel_sheet_id  Int      @id @default(autoincrement())
-  travel_train_id  Int      @unique
+  travel_train_id  Int? @unique
   departures_day   DateTime
-  train_brigade_id Int
+  train_brigade_id Int?
 
-  train Train @relation(fields: [travel_train_id], references: [train_id])
+  train Train? @relation(fields: [travel_train_id], references: [train_id])
 }
 
 model Route {

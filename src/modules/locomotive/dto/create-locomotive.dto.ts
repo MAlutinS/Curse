@@ -1,13 +1,13 @@
-import { IsString, IsNotEmpty, IsInt, IsDate } from 'class-validator';
-import { ApiProperty } from '@nestjs/swagger';
+import { IsString, IsInt, IsDate, IsOptional, IsNotEmpty } from 'class-validator';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
 export class CreateLocomotiveDto {
-  @ApiProperty({ description: 'Type of locomotive' })
+  @ApiProperty({ description: 'Type of the locomotive' })
   @IsString()
   @IsNotEmpty()
   locomotive_type: string;
 
-  @ApiProperty({ description: 'Condition of locomotive' })
+  @ApiProperty({ description: 'Condition of the locomotive' })
   @IsString()
   @IsNotEmpty()
   locomotive_condition: string;
@@ -17,8 +17,8 @@ export class CreateLocomotiveDto {
   @IsNotEmpty()
   last_tech_inspection: Date;
 
-  @ApiProperty({ description: 'ID of the repair brigade' })
+  @ApiPropertyOptional({ description: 'ID of the repair brigade' })
   @IsInt()
-  @IsNotEmpty()
-  repair_brigade_id: number;
+  @IsOptional()
+  repair_brigade_id?: number;
 }

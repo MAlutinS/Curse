@@ -1,19 +1,19 @@
-import { IsInt, IsNotEmpty, IsDate } from 'class-validator';
-import { ApiProperty } from '@nestjs/swagger';
+import { IsInt, IsDate, IsOptional, IsNotEmpty } from 'class-validator';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
 export class CreateTravelSheetDto {
-  @ApiProperty({ description: 'Id of the travel train' })
+  @ApiPropertyOptional({ description: 'ID of the train' })
   @IsInt()
-  @IsNotEmpty()
-  travel_train_id: number;
+  @IsOptional()
+  travel_train_id?: number;
 
-  @ApiProperty({ description: 'Date of the departures' })
+  @ApiProperty({ description: 'Departure day' })
   @IsDate()
   @IsNotEmpty()
   departures_day: Date;
 
-  @ApiProperty({ description: 'Id of the train brigade' })
+  @ApiPropertyOptional({ description: 'ID of the train brigade' })
   @IsInt()
-  @IsNotEmpty()
-  train_brigade_id: number;
+  @IsOptional()
+  train_brigade_id?: number;
 }
